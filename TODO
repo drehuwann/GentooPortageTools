@@ -1,0 +1,10 @@
+################################################################################
+############### dedicated file to propagate TODO lists in Git ##################
+################################################################################
+# convention: One TODO by LINE (easy vim/emacs use and future Parsing utility) #
+################################################################################
+#
+the future Parsing utility !
+in ./Mise_A_Jour#LANCEUR.sh : replace absolute path with relative ~/
+in ./*#SCRIPT.sh : remove setuid bit after use ('chmod -s')
+aliasing alias maj=`sudo ./Mise###SCRIPT`
