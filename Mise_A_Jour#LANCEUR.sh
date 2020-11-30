@@ -9,7 +9,7 @@
 #
 #   This program is distributed in the hope that it will be useful,
 #   but WITHOUT ANY WARRANTY; without even the implied warranty of
-#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See theJ
 #   GNU General Public License for more details.
 #
 #   You should have received a copy of the GNU General Public License
@@ -20,4 +20,4 @@
 #USAGE : ./Mise_A_Jour#LANCEUR.sh with normal rights
 
 # Initialisation
-xfce4-terminal --working-directory=/home/boss/Bureau/Mise_A_JourDEV.d -x sudo sh ./Mise_A_Jour#SCRIPT.sh
+xfce4-terminal --working-directory=$MAJ_PREFIX -x sudo sh ./Mise_A_Jour#SCRIPT.sh
