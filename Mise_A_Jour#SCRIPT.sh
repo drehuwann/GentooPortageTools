@@ -21,10 +21,10 @@
 
 
 # Donner le fichier à root
-sudo chown root Mise_A_Jour#SCRIPT.sh
-
+sudo chown root $0
 # mettre le bit setuid
-sudo chmod +s Mise_A_Jour#SCRIPT.sh
+sudo chmod +s $0
+# $0 = (this)filename with path
 
 #define FALSE 1
 let "FALSE = 1"

@@ -16,6 +16,13 @@ Copyright (C) 2020 by drehuwann@gmail.com
 
 
 DEPENDENCIES : gentoo portage
-USAGE : sudo ./Mise_A_Jour#SCRIPT.sh [--nosync]
+
+INSTALL : as user : Add and uncomment the next 2 lines to your ~/.bashrc
+#export MAJ_PREFIX="the_absolute_path_where_you_installed_these_files" 
+#alias maj="sudo $MAJ_PREFIX/Mise_A_Jour#SCRIPT.sh"
+
+USAGE : cd $MAJPREFIX && sudo ./Mise_A_Jour#SCRIPT.sh [--nosync]
 must be launched as root by a sudoer or wheel group member
 under xfce : use Mise_A_Jour#LANCEUR.sh with normal rights
+else you can simply use the alias :
+     maj [-nosync]
