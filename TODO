@@ -5,5 +5,5 @@
 ################################################################################
 #
 the future Parsing utility !
-in ./*#SCRIPT.sh : remove root ownership after use ('chown $USER *#SCRIPT.sh')
-adds INSTALL.sh script to configure MAJ_PREFIX and to adapt ~/.bashrc
+add INSTALL.sh script to configure MAJ_PREFIX and to adapt ~/.bashrc
+BUG: any dumb ARG makes sync disabled. Look at this.

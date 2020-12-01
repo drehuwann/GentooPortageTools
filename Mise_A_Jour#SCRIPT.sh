@@ -14,16 +14,16 @@
 #
 #   You should have received a copy of the GNU General Public License
 #   along with this program.  If not, see <https://www.gnu.org/licenses/>.
-#
+##########################################################################
 # DEPENDENCIES : gentoo portage
 # USAGE : sudo ./Mise_A_Jour#SCRIPT.sh [--nosync]
 # must be launched as root by a sudoer or wheel group member
-
+##########################################################################
 
 # Donner le fichier à root
-sudo chown root $0
+chown root $0
 # mettre le bit setuid
-sudo chmod +s $0
+chmod +s $0
 # $0 = (this)filename with path
 
 #define FALSE 1
@@ -41,7 +41,9 @@ NO_SYNC=$FALSE
 for i in $@
 	 #$@ = argv[1..argc]
 do
-    if [ $i="--nosync" ]
+    ARG=$i
+    echo ARG = $ARG
+    if [ "$ARG"=--nosync ]
     then
 	NO_SYNC=$TRUE
     fi
@@ -60,3 +62,10 @@ emerge -a --depclean
 revdep-rebuild
 eclean -d distfiles
 updatedb
+
+#remove root ownership after use
+################################################################################
+# $USER is the developer ;-), working in USER space ...
+################################################################################
+# If you aren't a dev, you should comment this next line ...
+chown $MAJ_USER $0

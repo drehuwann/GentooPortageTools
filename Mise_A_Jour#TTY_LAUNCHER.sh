@@ -1,5 +1,5 @@
 #!/bin/bash
-# Mise_A_Jour#LANCEUR.sh
+# Mise_A_Jour#TTY_LAUNCHEUR.sh
 # Copyright (C) 2020 by drehuwann@gmail.com
 #
 #   This program is free software: you can redistribute it and/or modify
@@ -16,9 +16,11 @@
 #   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #
 #
-#DEPENDENCIES : gentoo portage xfce
-#USAGE : ./Mise_A_Jour#LANCEUR.sh with normal rights
+#DEPENDENCIES : gentoo portage
+#USAGE : $MAJ_PREFIX/Mise_A_Jour#TTY_LAUNCHER.sh [--nosync]
+### else with aliasing : maj [--nosync]
 
 # Initialisation
 LAUNCH_USER="$USER"
-xfce4-terminal -x sudo MAJ_USER=$LAUNCH_USER sh $MAJ_PREFIX/Mise_A_Jour#SCRIPT.sh $@
+sudo MAJ_USER=$LAUNCH_USER sh $MAJ_PREFIX/Mise_A_Jour#SCRIPT.sh $@
+#/** $@==>transfert des arguments.
