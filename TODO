@@ -6,4 +6,4 @@
 #
 the future Parsing utility !
 add INSTALL.sh script to configure MAJ_PREFIX and to adapt ~/.bashrc
-BUG: any dumb ARG makes sync disabled. Look at this.
+

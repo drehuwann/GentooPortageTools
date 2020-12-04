@@ -26,29 +26,27 @@ chown root $0
 chmod +s $0
 # $0 = (this)filename with path
 
+#Debut arg parser
+################################################################################
 #define FALSE 1
 let "FALSE = 1"
-
 #define TRUE 1
 let "TRUE = 0"
 
-
-#Debut arg parser
-
-NO_SYNC=$FALSE
-#default value if no args
+#default flags
+let "NO_SYNC = $FALSE"
+#end of default flags
 
 for i in $@
 	 #$@ = argv[1..argc]
 do
-    ARG=$i
-    echo ARG = $ARG
-    if [ "$ARG"=--nosync ]
+    if [ $i = "--nosync" ]
     then
 	NO_SYNC=$TRUE
     fi
 done
 #Fin arg parser
+################################################################################
 
 if [ "$NO_SYNC" -ne $TRUE ]
    #if [ "$NO_SYNC" -ne 0 ] 
