@@ -9,7 +9,7 @@
 #
 #   This program is distributed in the hope that it will be useful,
 #   but WITHOUT ANY WARRANTY; without even the implied warranty of
-#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See theJ
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #   GNU General Public License for more details.
 #
 #   You should have received a copy of the GNU General Public License
@@ -24,3 +24,4 @@
 LAUNCH_USER="$USER"
 sudo MAJ_USER=$LAUNCH_USER sh $MAJ_PREFIX/Mise_A_Jour#SCRIPT.sh $@
 #/** $@==>transfert des arguments.
+unset $LAUNCH_USER

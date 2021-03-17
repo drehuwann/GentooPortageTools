@@ -4,6 +4,6 @@
 # convention: One TODO by LINE (easy vim/emacs use and future Parsing utility) #
 ################################################################################
 #
-the future Parsing utility !
+the future TODOs'Parsing utility !
 add INSTALL.sh script to configure MAJ_PREFIX and to adapt ~/.bashrc
 
