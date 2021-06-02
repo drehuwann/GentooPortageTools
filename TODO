@@ -6,4 +6,6 @@
 #
 the future TODOs'Parsing utility !
 add INSTALL.sh script to configure MAJ_PREFIX and to adapt ~/.bashrc
+Continue developping, integrating and documenting new Git DIrectory logger/
+Use $MAJ_PREFIX with logger/logger.sh
 
