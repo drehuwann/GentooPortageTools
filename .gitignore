@@ -1,5 +1,5 @@
 # internals and provisory. see ./TODO
-./logger/lo*.txt
+logger/lo*.txt
 
 # Editor cleaning ...
 *~
