@@ -59,6 +59,7 @@ emerge -avuDN --with-bdeps y @world
 emerge -a --depclean
 revdep-rebuild
 eclean -d distfiles
+eclean -d packages
 updatedb
 
 #remove root ownership after use
