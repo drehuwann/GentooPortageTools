@@ -18,6 +18,7 @@ Copyright (C) 2020-2021 by drehuwann@gmail.com
 DEPENDENCIES : gentoo portage
 
 INSTALL : as user : Add and uncomment the next 2 lines to your ~/.bashrc
+
 #export MAJ_PREFIX="the_absolute_path_where_you_installed_these_files" 
 #alias maj="$MAJ_PREFIX/Mise_A_Jour#TTY_LAUNCHER.sh"
 
@@ -32,3 +33,4 @@ use Mise_A_Jour#LANCEUR.sh with normal rights
 
 else you can simply use the alias :
      maj [-nosync]
+
