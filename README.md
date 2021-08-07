@@ -15,22 +15,24 @@ Copyright (C) 2020-2021 by drehuwann@gmail.com
    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-DEPENDENCIES : gentoo portage
+## DEPENDENCIES :<br>
+gentoo portage app-portage/eix
 
-INSTALL : as user : Add and uncomment the next 2 lines to your ~/.bashrc
+## INSTALL :<br>
+as user : Add and uncomment the next 2 lines to your ~/.bashrc
 
-#export MAJ_PREFIX="the_absolute_path_where_you_installed_these_files" 
-#alias maj="$MAJ_PREFIX/Mise_A_Jour#TTY_LAUNCHER.sh"
+<code>#export MAJ_PREFIX="the_absolute_path_where_you_installed_these_file"</code><br>
+<code>#alias maj="$MAJ_PREFIX/Mise_A_Jour#TTY_LAUNCHER.sh"</code><br>
 
-USAGES :
-under TTY :
-      sudo $MAJPREFIX/Mise_A_Jour#SCRIPT.sh [--nosync]
-      $MAJPREFIX/Mise_a_Jour#TTY_LAUNCHER.sh [--nosync]
+## USAGES :<br>
+### under TTY :<br>
+<code>sudo $MAJ_PREFIX/Mise_A_Jour#SCRIPT.sh [--nosync]</code><br>
+<code>$MAJ_PREFIX/Mise_a_Jour#TTY_LAUNCHER.sh [--nosync]</code><br>
 must be launched as root by a sudoer or wheel group member
 
-under xfce :
-use Mise_A_Jour#LANCEUR.sh with normal rights
+### under xfce :<br>
+use <code>$MAJ_PREFIX/Mise_A_Jour#LANCEUR.sh [--nosync]</code> with normal rights
 
-else you can simply use the alias :
-     maj [-nosync]
-
+### else :<br>
+you can simply use the alias, anyway :<br>
+<code>maj [-nosync]</code>

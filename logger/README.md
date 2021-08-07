@@ -15,11 +15,13 @@ Copyright (C) 2020-2021 by drehuwann@gmail.com
    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-DEPENDENCIES : gentoo portage
+## DEPENDENCIES :<br>
+gentoo portage
 
-USAGES : as $USER : ./logger.sh 
+## USAGES :<br>
+as <code>$USER</code> : <code>./logger.sh</code><br>
 Tool under construction. Works in its own directory. 
 
-TEST : Should it be run under $GIT_ROOT/logger/ to ensure Git repo 
-cleaniness and .gitignore correctness ?
- -> YES, for instance ... (see ../TODO)
+## TEST :<br>
+Should it be run under $GIT_ROOT/logger/ to ensure Git repo cleaniness and .gitignore correctness ?<br>
+-> YES, for instance ... (see ../TODO)<br>
