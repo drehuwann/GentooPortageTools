@@ -19,8 +19,13 @@ Copyright (C) 2020-2021 by drehuwann@gmail.com
 gentoo portage
 
 ## USAGES :<br>
-as <code>$USER</code> : <code>./logger.sh</code><br>
-Tool under construction. Works in its own directory. 
+as <code>$USER</code> : <code>./logger.sh [-v[v]]</code><br>
+
+## OPTIONS :<br>
+<code>-v</code> : More verbose conflicts (<code>emerge --verbose-conflicts</code><br>
+<code>-vv</code> : Very verbose output (<code>emerge --debug</code><br>
+
+Tool under construction. Works in its own directory.<br>
 
 ## TEST :<br>
 Should it be run under $GIT_ROOT/logger/ to ensure Git repo cleaniness and .gitignore correctness ?<br>
