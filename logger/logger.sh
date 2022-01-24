@@ -10,7 +10,7 @@ let "TRUE = 0"
 #default flags
 let "VERBOSE = $FALSE"
 let "VERY_VERBOSE = $FALSE"
-MOREFLAGS=-pvUDN
+MOREFLAGS=-pUDN
 #end of default flags
 
 for i in $@

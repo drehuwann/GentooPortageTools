@@ -23,7 +23,7 @@ as <code>$USER</code> : <code>./logger.sh [-v[v]]</code><br>
 
 ## OPTIONS :<br>
 <code>-v</code> : More verbose conflicts (<code>emerge --verbose-conflicts)</code><br>
-<code>-vv</code> : Very verbose output (<code>emerge --debug</code>)<br>
+<code>-vv</code> : Very verbose output (<code>emerge --verbose-conflicts --debug</code>)<br>
 
 Tool under construction. Works in its own directory.<br>
 
