@@ -30,7 +30,7 @@ chmod +s $0
 ################################################################################
 #define FALSE 1
 let "FALSE = 1"
-#define TRUE 1
+#define TRUE 0
 let "TRUE = 0"
 
 #default flags
