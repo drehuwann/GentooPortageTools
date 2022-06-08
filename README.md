@@ -35,4 +35,4 @@ use <code>$MAJ_PREFIX/Mise_A_Jour#LANCEUR.sh [--nosync]</code> with normal right
 
 ### else :<br>
 you can simply use the alias, anyway :<br>
-<code>maj [-nosync]</code>
+<code>maj [--nosync]</code>
