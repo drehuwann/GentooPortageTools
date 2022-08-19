@@ -1,5 +1,5 @@
 # README.md
-Copyright (C) 2020-2021 by drehuwann@gmail.com
+Copyright (C) 2020-2022 by drehuwann@gmail.com
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@ Copyright (C) 2020-2021 by drehuwann@gmail.com
 
 
 ## DEPENDENCIES :<br>
-gentoo portage app-portage/eix
+gentoo portage app-portage/eix sys-kernel/genkernel
 
 ## INSTALL :<br>
 as user : Add and uncomment the next 2 lines to your ~/.bashrc
@@ -26,8 +26,8 @@ as user : Add and uncomment the next 2 lines to your ~/.bashrc
 
 ## USAGES :<br>
 ### under TTY :<br>
-<code>sudo $MAJ_PREFIX/Mise_A_Jour#SCRIPT.sh [--nosync]</code><br>
-<code>$MAJ_PREFIX/Mise_a_Jour#TTY_LAUNCHER.sh [--nosync]</code><br>
+<code>sudo $MAJ_PREFIX/Mise_A_Jour#SCRIPT.sh [--nosync] [--pd]</code><br>
+<code>$MAJ_PREFIX/Mise_a_Jour#TTY_LAUNCHER.sh [--nosync] [--pd]</code><br>
 must be launched as root by a sudoer or wheel group member
 
 ### under xfce :<br>
@@ -36,3 +36,8 @@ use <code>$MAJ_PREFIX/Mise_A_Jour#LANCEUR.sh [--nosync]</code> with normal right
 ### else :<br>
 you can simply use the alias, anyway :<br>
 <code>maj [--nosync]</code>
+
+## OPTIONS :<br>
+<code>--nosync</code> : Don't sync again package database.<br>
+<code>--pd</code> : Powers down system after run.<br>
+

@@ -16,7 +16,7 @@
 #   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ##########################################################################
 # DEPENDENCIES : gentoo portage
-# USAGE : sudo ./Mise_A_Jour#SCRIPT.sh [--nosync]
+# USAGE : sudo ./Mise_A_Jour#SCRIPT.sh [--nosync] [--pd]
 # must be launched as root by a sudoer or wheel group member
 ##########################################################################
 
@@ -35,6 +35,7 @@ let "TRUE = 0"
 
 #default flags
 let "NO_SYNC = $FALSE"
+let "PD = $FALSE"
 #end of default flags
 
 for i in $@
@@ -44,18 +45,33 @@ do
     then
 	NO_SYNC=$TRUE
     fi
+    if [ $i = "--pd" ]
+    then
+    	PD=$TRUE
+    fi
 done
 #Fin arg parser
 ################################################################################
 
 if [ "$NO_SYNC" -ne $TRUE ]
    #if [ "$NO_SYNC" -ne 0 ] 
-   then
-       layman -S
-       eix-sync
+then
+    layman -S
+    eix-sync
 fi
 
 emerge -avuDN --with-bdeps y @world
+
+NEW_KERN_VER=(`eix gentoo-sources | grep 'Installed versions' | awk '{print $3}' | cut -d\( -f1`)
+CURRENT_KERN_VER=(`uname -r | cut -d- -f1`)
+
+if [ $NEW_KERN_VER != $CURRENT_KERN_VER ]
+then
+    KERN_SYMLINK_NUM=(`eselect kernel list | grep -- -$NEW_KERN_VER- | awk '{print }' | cut -d] -f1 | cut -d[ -f2`)
+    eselect kernel set $KERN_SYMLINK_NUM
+    genkernel all
+fi
+    
 emerge -a --depclean
 revdep-rebuild
 eclean -d distfiles
@@ -68,3 +84,9 @@ updatedb
 ################################################################################
 # If you aren't a dev, you should comment this next line ...
 chown $MAJ_USER $0
+
+
+if [ "$PD" -ne $FALSE ]
+then
+    shutdown -P now
+fi
