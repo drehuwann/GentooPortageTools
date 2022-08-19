@@ -67,7 +67,7 @@ CURRENT_KERN_VER=(`uname -r | cut -d- -f1`)
 
 if [ $NEW_KERN_VER != $CURRENT_KERN_VER ]
 then
-    KERN_SYMLINK_NUM=(`eselect kernel list | grep -- -$NEW_KERN_VER- | awk '{print }' | cut -d] -f1 | cut -d[ -f2`)
+    KERN_SYMLINK_NUM=(`eselect kernel list | grep -- -$NEW_KERN_VER- | awk '{print $1}' | cut -d] -f1 | cut -d[ -f2`)
     eselect kernel set $KERN_SYMLINK_NUM
     genkernel all
 fi
