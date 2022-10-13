@@ -8,4 +8,4 @@ the future TODOs'Parsing utility !
 add INSTALL.sh script to configure MAJ_PREFIX and to adapt ~/.bashrc
 Continue developping, integrating and documenting new Git DIrectory logger/
 Use $MAJ_PREFIX with logger/logger.sh
-
+from commit 09ec...c6cf, it appears that kernel compile occurs on the next run. Look why ...
