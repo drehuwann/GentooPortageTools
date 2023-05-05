@@ -3,7 +3,7 @@
 # $MAJ_PREFIX/sav/sav.sh
 #
 # 
- Copyright (C) 2020-2021 by drehuwann@gmail.com
+ Copyright (C) 2020-2023 by drehuwann@gmail.com
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -26,16 +26,12 @@ gentoo portage
 as user : Add and uncomment the next 2 lines to your ~/.bashrc
 
 <code>#export MAJ_PREFIX="the_absolute_path_where_you_installed_this_dirctory"</code><br>
-<code>#alias maj="$MAJ_PREFIX/sav/sav.sh"</code><br>
+<code>#alias sav="$MAJ_PREFIX/sav/sav.sh"</code><br>
 
 ## USAGES :<br>
 ### under TTY :<br>
 <code>sudo $MAJ_PREFIX/sav/sav.sh "package name" [more packages]</code><br>
-<code>$MAJ_PREFIX/Mise_a_Jour#TTY_LAUNCHER.sh [--nosync]</code><br>
 must be launched as root by a sudoer or wheel group member
-
-### under xfce :<br>
-use <code>$MAJ_PREFIX/Mise_A_Jour#LANCEUR.sh [--nosync]</code> with normal rights
 
 ### else :<br>
 you can simply use the alias, anyway :<br>
