@@ -56,8 +56,7 @@ done
 if [ "$NO_SYNC" -ne $TRUE ]
    #if [ "$NO_SYNC" -ne 0 ] 
 then
-    layman -S
-    eix-sync
+    emaint sync --auto
 fi
 
 emerge -avuDN --with-bdeps y @world

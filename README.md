@@ -16,7 +16,7 @@ Copyright (C) 2020-2022 by drehuwann@gmail.com
 
 
 ## DEPENDENCIES :<br>
-gentoo portage app-portage/eix sys-kernel/genkernel
+gentoo portage app-portage/eix sys-kernel/genkernel app-eselect/eselect-repository
 
 ## INSTALL :<br>
 as user : Add and uncomment the next 2 lines to your ~/.bashrc
