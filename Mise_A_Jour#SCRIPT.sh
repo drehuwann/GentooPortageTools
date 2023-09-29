@@ -63,6 +63,14 @@ emerge -avuDN --with-bdeps y @world
 
 NEW_KERN_VER=(`eix gentoo-sources | grep 'Installed versions' | awk '{print $3}' | cut -d\( -f1`)
 CURRENT_KERN_VER=(`uname -r | cut -d- -f1`)
+THIRD_FIELD=(`uname -r | cut -d- -f3`)
+
+if [ $THIRD_FIELD != $(uname -m) ]
+   #if current kernel is a revision version
+then
+    CURRENT_KERN_VER=$CURRENT_KERN_VER-$THIRD_FIELD
+    #append revision number to kernel version
+fi
 
 if [ $NEW_KERN_VER != $CURRENT_KERN_VER ]
 then
