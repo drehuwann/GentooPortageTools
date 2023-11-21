@@ -59,7 +59,12 @@ then
     emaint sync --auto
 fi
 
-emerge -avuDN --with-bdeps y @world
+if [ "$PD" -ne $TRUE ]
+then
+    ASK="--ask"
+fi
+
+emerge -vuDN $ASK --with-bdeps y @world
 
 NEW_KERN_VER=(`eix gentoo-sources | grep 'Installed versions' | awk '{print $3}' | cut -d\( -f1`)
 CURRENT_KERN_VER=(`uname -r | cut -d- -f1`)
@@ -79,7 +84,7 @@ then
     genkernel all
 fi
     
-emerge -a --depclean
+emerge $ASK --depclean
 revdep-rebuild
 eclean -d distfiles
 eclean -d packages
@@ -95,5 +100,5 @@ chown $MAJ_USER $0
 
 if [ "$PD" -ne $FALSE ]
 then
-    shutdown -P now
+    shutdown -Ph now
 fi
