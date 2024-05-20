@@ -41,3 +41,6 @@ fi
 
 echo "emerge $MOREFLAGS --with-bdeps y @world 1>./log.txt 2>./logerr.txt"
 emerge $MOREFLAGS --with-bdeps y @world 1>./log.txt 2>./logerr.txt
+less ./log.txt
+less ./logerr.txt
+
