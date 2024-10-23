@@ -19,7 +19,7 @@ Copyright (C) 2020-2021 by drehuwann@gmail.com
 gentoo portage
 
 ## USAGES :<br>
-as <code>$USER</code> : <code>./logger.sh [-v[v]]</code><br>
+as <code>$USER</code> : <code>./logger.sh [-v[v]|-h]</code><br>
 
 ## OPTIONS :<br>
 <code>-v</code> : More verbose conflicts (<code>emerge --verbose-conflicts)</code><br>
