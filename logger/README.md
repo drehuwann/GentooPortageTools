@@ -24,6 +24,7 @@ as <code>$USER</code> : <code>./logger.sh [-v[v]]</code><br>
 ## OPTIONS :<br>
 <code>-v</code> : More verbose conflicts (<code>emerge --verbose-conflicts)</code><br>
 <code>-vv</code> : Very verbose output (<code>emerge --verbose-conflicts --debug</code>)<br>
+<code>-h</code> : Display help message and exits. Help is also displayed if invalid parameters are specified in command line.<br>
 
 Tool under construction. Works in its own directory.<br>
 
