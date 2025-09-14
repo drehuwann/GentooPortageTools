@@ -82,7 +82,7 @@ then
     #append revision number to kernel version
 fi
 
-if [ "$NK != $FALSE" ] && [ $NEW_KERN_VER != $CURRENT_KERN_VER ]
+if [ "$NK" -ne $FALSE ] && [ $NEW_KERN_VER != $CURRENT_KERN_VER ]
 then
     KERN_SYMLINK_NUM=(`eselect kernel list | grep -- -$NEW_KERN_VER- | cut -d] -f1 | cut -d[ -f2`)
     eselect kernel set $KERN_SYMLINK_NUM
