@@ -35,9 +35,9 @@ use <code>$MAJ_PREFIX/Mise_A_Jour#LANCEUR.sh [--nosync]</code> with normal right
 
 ### else :<br>
 you can simply use the alias, anyway :<br>
-<code>maj [--nosync]</code>
+`maj [--nosync] [--pd] [--nokern]`
 
 ## OPTIONS :<br>
 <code>--nosync</code> : Don't sync again package database.<br>
 <code>--pd</code> : Powers down system after run.<br>
-
+`--nokern` : Skip kernel auto-rebuild when version changes
