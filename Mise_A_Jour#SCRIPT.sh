@@ -16,7 +16,7 @@
 #   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ##########################################################################
 # DEPENDENCIES : gentoo portage
-# USAGE : sudo ./Mise_A_Jour#SCRIPT.sh [--nosync] [--pd]
+# USAGE : sudo ./Mise_A_Jour#SCRIPT.sh [--nosync] [--pd] [--nokern]
 # must be launched as root by a sudoer or wheel group member
 ##########################################################################
 
@@ -36,6 +36,7 @@ let "TRUE = 0"
 #default flags
 let "NO_SYNC = $FALSE"
 let "PD = $FALSE"
+let "NK = $FALSE"
 #end of default flags
 
 for i in $@
@@ -48,6 +49,10 @@ do
     if [ $i = "--pd" ]
     then
     	PD=$TRUE
+    fi
+    if [ $i = "--nokern" ]
+    then
+    	NK=$TRUE
     fi
 done
 #Fin arg parser
@@ -64,7 +69,7 @@ then
     ASK="--ask"
 fi
 
-emerge -vuDN $ASK --with-bdeps y @world
+emerge -vuDN $ASK --with-bdeps y --oneshot @world
 
 NEW_KERN_VER=(`eix gentoo-sources | grep 'Installed versions' | awk '{print $3}' | cut -d\( -f1`)
 CURRENT_KERN_VER=(`uname -r | cut -d- -f1`)
@@ -77,7 +82,7 @@ then
     #append revision number to kernel version
 fi
 
-if [ $NEW_KERN_VER != $CURRENT_KERN_VER ]
+if [ "$NK != $FALSE" ] && [ $NEW_KERN_VER != $CURRENT_KERN_VER ]
 then
     KERN_SYMLINK_NUM=(`eselect kernel list | grep -- -$NEW_KERN_VER- | cut -d] -f1 | cut -d[ -f2`)
     eselect kernel set $KERN_SYMLINK_NUM
