@@ -17,8 +17,8 @@
 #
 #
 #DEPENDENCIES : gentoo portage
-#USAGE : $MAJ_PREFIX/Mise_A_Jour#TTY_LAUNCHER.sh [--nosync]
-### else with aliasing : maj [--nosync]
+#USAGE : $MAJ_PREFIX/Mise_A_Jour#TTY_LAUNCHER.sh [--nosync --pd --nokern]
+### else with aliasing : maj [--nosync --pd --nokern]
 
 # Initialisation
 LAUNCH_USER="$USER"

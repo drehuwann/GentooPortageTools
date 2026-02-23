@@ -25,6 +25,12 @@ chown root $0
 # mettre le bit setuid
 chmod +s $0
 # $0 = (this)filename with path
+cleanup() {
+    echo "Cleaning up setuid bit..."
+    chmod -s "$0"
+    chown "$MAJ_USER" "$0"
+}
+trap 'cleanup' EXIT INT TERM
 
 #Debut arg parser
 ################################################################################
@@ -34,9 +40,9 @@ let "FALSE = 1"
 let "TRUE = 0"
 
 #default flags
-let "NO_SYNC = $FALSE"
-let "PD = $FALSE"
-let "NK = $FALSE"
+let "NO_SYNC = $FALSE" #do not run sync
+let "PD = $FALSE"      #powers down computer after run
+let "NK = $FALSE"      #no kernel building
 #end of default flags
 
 for i in $@
@@ -72,36 +78,56 @@ fi
 emerge -vuDN $ASK --with-bdeps y --oneshot @world
 
 NEW_KERN_VER=(`eix gentoo-sources | grep 'Installed versions' | awk '{print $3}' | cut -d\( -f1`)
+REV_FIELD=$(echo "$NEW_KERN_VER" | cut -d- -f2)
 CURRENT_KERN_VER=(`uname -r | cut -d- -f1`)
+
 THIRD_FIELD=(`uname -r | cut -d- -f3`)
-
-if [ $THIRD_FIELD != $(uname -m) ]
-   #if current kernel is a revision version
+if [[ "$NK" -eq "$FALSE" ]] && \
+   [[ "$NEW_KERN_VER" != "$CURRENT_KERN_VER" || "$THIRD_FIELD" != "$REV_FIELD" ]]
 then
-    CURRENT_KERN_VER=$CURRENT_KERN_VER-$THIRD_FIELD
-    #append revision number to kernel version
-fi
-
-if [ "$NK" -ne $FALSE ] && [ $NEW_KERN_VER != $CURRENT_KERN_VER ]
-then
-    KERN_SYMLINK_NUM=(`eselect kernel list | grep -- -$NEW_KERN_VER- | cut -d] -f1 | cut -d[ -f2`)
+    echo Preparing to build kernel
+    KERN_SYMLINK_NUM=(`eselect kernel list | grep -- -$NEW_KERN_VER | cut -d] -f1 | cut -d[ -f2`)
     eselect kernel set $KERN_SYMLINK_NUM
-    genkernel all
+    pushd /usr/src/linux
+    OLD_CONFIG="/boot/config-$(uname -r)"
+    NEW_CONFIG="/usr/src/linux/.config"
+    # Always copy the old config, regardless of genkernel or manual build
+    if [[ -f "$OLD_CONFIG" ]]; then
+        echo "Using kernel config from $OLD_CONFIG"
+        cp "$OLD_CONFIG" "$NEW_CONFIG"
+    else
+        echo "ERROR: No kernel config found at $OLD_CONFIG"
+        echo "You must configure the kernel manually."
+        popd
+        exit 1
+    fi
+    # Now choose build method
+    if command -v genkernel >/dev/null 2>&1; then
+        if [ "$PD" -eq $TRUE ]; then
+            echo "Using genkernel in non-interactive mode (--nomenuconfig)"
+            genkernel --oldconfig --nomenuconfig all
+        else
+            genkernel --oldconfig all
+        fi
+    else
+        if [ "$PD" -eq $TRUE ]; then
+            echo "Using olddefconfig because --pd was passed"
+            make olddefconfig
+        else
+            make oldconfig
+        fi
+        make
+        make modules_install
+        make install
+    fi
+    popd
 fi
-    
+
 emerge $ASK --depclean
 revdep-rebuild
 eclean -d distfiles
 eclean -d packages
 updatedb
-
-#remove root ownership after use
-################################################################################
-# $USER is the developer ;-), working in USER space ...
-################################################################################
-# If you aren't a dev, you should comment this next line ...
-chown $MAJ_USER $0
-
 
 if [ "$PD" -ne $FALSE ]
 then
