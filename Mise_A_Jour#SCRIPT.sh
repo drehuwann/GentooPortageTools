@@ -119,6 +119,7 @@ then
         make
         make modules_install
         make install
+	grub-mkconfig -o /boot/grub.cfg
     fi
     popd
 fi
