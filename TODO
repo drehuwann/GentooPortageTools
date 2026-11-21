@@ -9,4 +9,3 @@ add INSTALL.sh script to configure MAJ_PREFIX and to adapt ~/.bashrc
 Use $MAJ_PREFIX with logger/logger.sh
 add a switch to make the script run eix-test-obsolete
 force kernel-rebuild when sha256(/usr/src/linux/.config) differs from sha256(/boot/config-*)
-fix kernel rebuild at each run; even if there is no kernel update from upstream
