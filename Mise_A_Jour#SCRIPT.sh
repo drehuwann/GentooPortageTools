@@ -124,20 +124,29 @@ if [[ "$NK" -eq "$FALSE" ]]; then
 
     echo "Installed gentoo-sources version: $NEW_KERN_VER"
 
-    # Find the corresponding kernel source in eselect
+    # Build the eselect kernel name from the Portage version
+    # 6.18.64-r1 -> linux-6.18.64-gentoo-r1
+    # 6.18.64    -> linux-6.18.64-gentoo
+    KERN_BASE="${NEW_KERN_VER%%-r*}"
+    KERN_REV=""
+    if [[ "$NEW_KERN_VER" == *-r* ]]; then
+        KERN_REV="-r${NEW_KERN_VER##*-r}"
+    fi
+    KERN_NAME="linux-${KERN_BASE}-gentoo${KERN_REV}"
+
+    # Find the exact kernel source name in eselect
     KERN_SYMLINK_NUM=$(
         eselect kernel list |
-        awk -v prefix="linux-${NEW_KERN_VER}" '
-            $2 ~ ("^" prefix "([^0-9.]|$)") {
-                gsub(/[][]/, "", $1)
-                print $1
-                exit
-            }
-        '
+        awk -v name="$KERN_NAME" '
+            $2 == name {
+            gsub(/[][]/, "", $1)
+            print $1
+            exit
+        }'
     )
 
     if [[ -z "$KERN_SYMLINK_NUM" ]]; then
-        echo "ERROR: Cannot find kernel source linux-${NEW_KERN_VER}"
+        echo "ERROR: Cannot find kernel source ${KERN_NAME}"
         echo "Available sources:"
         eselect kernel list
         exit 1
